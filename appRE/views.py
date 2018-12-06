@@ -9,9 +9,17 @@ def openHomePage(request):
     return render(request, "index.html", {"type": type})
 
 def openUserLogin(request):
-    type = request.GET.get("type")
-    return render(request,"index.html",{"type":type})
-
+    try:
+        sessions = request.session['email']
+        if sessions != '':
+            token = UserRegister.objects.filter(email_id=sessions)
+            return render(request,"uwelcome.html",{'udetails':token})
+        else:
+            type = request.GET.get("type")
+            return render(request,"index.html",{"type":type})
+    except:
+        type = request.GET.get("type")
+        return render(request, "index.html", {"type": type})
 def openUserRegister(request):
     type = request.GET.get("type")
     res = State.objects.values('name')
@@ -57,9 +65,10 @@ def checkUserLogin(request):
     upass=request.POST.get('psw')
     ul=UserRegister.objects.filter(email_id=uname,password=upass)
     if ul:
+        sess = request.session['email']=uname
         return render(request,"uwelcome.html",{"udetails":ul})
     else:
-        return render(request,"index.html",{"type":'h_user',"message":"Invalid Details"})
+        return render(request,"index.html",{"type":'h_user',"message":"Invalid Details"},)
 
 def checkProfile(request):
     uname = request.POST.get('uname')
@@ -69,3 +78,8 @@ def checkProfile(request):
         return render(request, "uwelcome.html", {"udetails": ul})
     else:
         return render(request, "index.html", {"type": 'h_user', "message": "Invalid Details"})
+
+
+def UserLogout(request):
+    logout = request.session['email']=''
+    return render(request,"index.html",{"type":'h_User_register'})

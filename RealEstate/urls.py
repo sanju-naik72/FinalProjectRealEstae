@@ -26,6 +26,7 @@ urlpatterns = [
     path('registerUser/',views.registerUser),
     path('checkUserLogin/', views.checkUserLogin),
     path('checkProfile/', views.checkProfile),
+    path('logout/', views.UserLogout),
     path('home/',views.openHomePage),
     path('about/',TemplateView.as_view(template_name="about-us.html")),
     path('blog/',TemplateView.as_view(template_name="blog.html")),
