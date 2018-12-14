@@ -24,9 +24,16 @@ urlpatterns = [
     path('', views.openHomePage),
     path('User/', views.openUserLogin),
     path('registerUser/',views.registerUser),
+
     path('checkUserLogin/', views.checkUserLogin),
     path('checkProfile/', views.checkProfile),
+
+    path('updateProfile/', views.updateProfile),
+    path('updatesave/', views.updatesave),
+
+
     path('logout/', views.UserLogout),
+
     path('home/',views.openHomePage),
     path('about/',TemplateView.as_view(template_name="about-us.html")),
     path('blog/',TemplateView.as_view(template_name="blog.html")),
@@ -35,4 +42,9 @@ urlpatterns = [
     path('properties/',TemplateView.as_view(template_name="properties.html")),
     path('single-blog/',TemplateView.as_view(template_name="single-blog.html")),
     path('contact/',TemplateView.as_view(template_name="contact.html")),
+
+
+
+    path('addproperties/',views.addproperties),
+    path('upropertysave/',views.upropertysave),
 ]

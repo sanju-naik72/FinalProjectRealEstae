@@ -85,7 +85,7 @@
     {% if type == "h_User_register" %}
     <div>
         <div class="container" >
-            <div class="advanced_search">
+            <div class="advanced_search" style="margin-top: -733px;">
                 <form action="/registerUser/"   method="post" style="border:1px solid #ccc">
                 {% csrf_token %}
                     <div class="form-group col-md-12" >
@@ -102,9 +102,30 @@
                     </div>
                     <div class="form-group col-md-12">
 
+                    <label for="age" class="col-md-4"><b>Age</b></label>
+                    <input type="number" class="col-md-8" placeholder="Enter Age" name="u_age" required>
+                    </div>
+                    <div class="form-group col-md-12">
+
+                    <label for="gender" class="col-md-4"><b>Gender</b></label>
+                    <input type="text" class="col-md-8" placeholder="Enter Gender" name="u_gender" required>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <div class="form-group col-md-12">
+
+                    <label for="occup" class="col-md-4"><b>Occupation</b></label>
+                    <input type="text" class="col-md-8" placeholder="Enter Occupation" name="u_occup" required>
+                    </div>
+                        <div class="form-group col-md-12">
+
+                    <label for="sal" class="col-md-4"><b>Salary</b></label>
+                    <input type="number" class="col-md-8" placeholder="Enter Salary" name="u_salary" required>
+                    </div>
+
                     <label for="psw" class="col-md-4"><b>Password</b></label>
                     <input type="password" class="col-md-8" placeholder="Enter Password" name="u_pass" required>
                     </div>
+
 
                     <div class="form-group col-md-12">
                     <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
@@ -123,7 +144,7 @@
 {% if type == 'h_User_Login' %}
     <div>
         <div class="container" >
-            <div class="advanced_search">
+            <div class="advanced_search" style="margin-top: -650px;">
                 <form action="/checkUserLogin/"   method="post" style="border:1px solid #ccc">
                 {% csrf_token %}
                     <div class="form-group col-md-12" >
@@ -139,7 +160,7 @@
 
                     <button type="submit" class="signupbtn col-md-6" style="width: 100%;height: 30px">Login</button>
                     </div>
-                        <div>{{ message }}</div>
+                        <div>{{ message1 }}</div>
                 </form>
             </div>
         </div>
