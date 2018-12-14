@@ -18,6 +18,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 
 from appRE import views
+from appRE.views import viewproperties
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +31,10 @@ urlpatterns = [
 
     path('updateProfile/', views.updateProfile),
     path('updatesave/', views.updatesave),
+    path('deleteProperty/', views.deleteProperty),
+
+
+    path('viewproperties/',viewproperties.as_view()),
 
 
     path('logout/', views.UserLogout),

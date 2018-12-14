@@ -1,6 +1,8 @@
 
 from django.shortcuts import render
-from .models import UserRegister, State , City
+from django.views.generic import ListView
+
+from .models import UserRegister, State , City,property
 
 
 # Create your views here.
@@ -142,3 +144,31 @@ def upropertysave(request):
     property(state=state,city=city,locality=locality,price=price,pincode=pin,Customer_Name=res.name,contact_number=res.contact_no,Customer_Email=email,name=name).save()
     prodetails=property.objects.filter(Customer_Email=email)
     return render(request,"uwelcome.html",{"type":"add_property","udetails":res,"message":"Property Added Successfully","prodetails":prodetails})
+
+
+def deleteProperty(request):
+    deleteproperty1 = request.POST.get('deleteproperty')
+    dd=str(deleteproperty1)
+    eamil = request.GET.get('email')
+
+    from  .models import property
+    property.objects.filter(id=dd).delete()
+    res=UserRegister.objects.get(email_id=eamil)
+
+    prodetails=property.objects.filter(Customer_Email=eamil)
+    return render(request,"uwelcome.html",{"type":"add_property","udetails":res,"message":"Property deleted Successfully","prodetails":prodetails})
+#
+#
+# def viewproperties(request):
+#     deleteproperty1 = request.POST.get('deleteproperty')
+#     dd = str(deleteproperty1)
+#     eamil = request.GET.get('email')
+#
+#     from .models import property
+#     res = UserRegister.objects.get(email_id=eamil)
+#
+#     prodetails = property.objects.all
+#     return render(request, "uwelcome.html",{"type": "viewproperties", "udetails": res, "prodetails": prodetails})
+
+class viewproperties(ListView):
+    model = property
