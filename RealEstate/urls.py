@@ -34,7 +34,7 @@ urlpatterns = [
     path('deleteProperty/', views.deleteProperty),
 
 
-    path('viewproperties/',viewproperties.as_view()),
+    path('viewproperties/',views.viewproperties),
 
 
     path('logout/', views.UserLogout),
@@ -42,11 +42,12 @@ urlpatterns = [
     path('home/',views.openHomePage),
     path('about/',TemplateView.as_view(template_name="about-us.html")),
     path('blog/',TemplateView.as_view(template_name="blog.html")),
-    path('agent/',TemplateView.as_view(template_name="agents.html")),
+    path('agents/',TemplateView.as_view(template_name="agents.html")),
     path('elements/',TemplateView.as_view(template_name="elements.html")),
     path('properties/',TemplateView.as_view(template_name="properties.html")),
     path('single-blog/',TemplateView.as_view(template_name="single-blog.html")),
     path('contact/',TemplateView.as_view(template_name="contact.html")),
+    path('contacts/',views.viewcontacts),
 
 
 

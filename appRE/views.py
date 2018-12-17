@@ -4,8 +4,6 @@ from django.views.generic import ListView
 
 from .models import UserRegister, State , City,property
 
-
-# Create your views here.
 def openHomePage(request):
     type = "h_User_register"
     return render(request, "index.html", {"type": type})
@@ -157,18 +155,20 @@ def deleteProperty(request):
 
     prodetails=property.objects.filter(Customer_Email=eamil)
     return render(request,"uwelcome.html",{"type":"add_property","udetails":res,"message":"Property deleted Successfully","prodetails":prodetails})
-#
-#
-# def viewproperties(request):
-#     deleteproperty1 = request.POST.get('deleteproperty')
-#     dd = str(deleteproperty1)
-#     eamil = request.GET.get('email')
-#
-#     from .models import property
-#     res = UserRegister.objects.get(email_id=eamil)
-#
-#     prodetails = property.objects.all
-#     return render(request, "uwelcome.html",{"type": "viewproperties", "udetails": res, "prodetails": prodetails})
 
-class viewproperties(ListView):
-    model = property
+
+def viewproperties(request):
+    eamil = request.GET.get('email')
+
+    from .models import property
+    res = UserRegister.objects.get(email_id=eamil)
+
+    prodetails = property.objects.all()
+    return render(request, "uwelcome.html",{"type": "viewproperties", "udetails": res, "prodetails": prodetails})
+
+def viewcontacts(request):
+    eamil = request.GET.get('email')
+
+    from .models import property
+    res = UserRegister.objects.get(email_id=eamil)
+    return render(request,"uwelcome.html" ,{"type":"contacts","udetails":res})
